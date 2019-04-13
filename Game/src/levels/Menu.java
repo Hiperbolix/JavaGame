@@ -1,40 +1,30 @@
 package levels;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
-//import TileMap.Background;
+import Game.Background;
 
 public class Menu extends Level {
-	
-	//private background bg; zrób bg
+	private Background bg;
 
 	private Color titleColor;
 	private Font titleFont;
 	
 	private Font font;
-	private String[] options=
-			{
-					"New Game",//"Nowa Gra"
-					"Load Game",//"Wczytaj Grę"
-					"Options"//"Opcje"
-			};
+	
+	private int currentChoice = 0;
+	private String[] options= {"Nowa Gra", "Wczytaj Grę", "Opcje", "Wyjście"};
 	
 
-	Menu(LevelManager lm)
-	{
+	public Menu (LevelManager lm) {
 		this.lm = lm;
-		
-	
+
 		try {
-			/*
-			bg = new Background("/Backgrounds/menubg.gif", 1);
-			bg.setVector(-0.1, 0);
-			*/
-			titleColor = new Color(256, 200, 100);
-			titleFont = new Font(
-					"Utopia",
-					Font.PLAIN,
-					42);
+			bg = new Background("Image/menubg1.jpg");
+			
+			titleColor = new Color(128, 0, 128);
+			titleFont = new Font("Utopia", Font.PLAIN, 42);
 			
 			font = new Font("FreeSans", Font.PLAIN, 24);
 			
@@ -45,37 +35,76 @@ public class Menu extends Level {
 	}
 	
 	public void start() {}
-
 	
-	public void update() {
-		// bg.update
+	
 
-	}
-
-	@Override
 	public void draw(Graphics2D g) {
-		// bg.draw
+		//background
+		bg.draw(g);
+		 
+		//title
+		 g.setColor(titleColor);
+		 g.setFont(titleFont);
+		 g.drawString("...", 50, 70);
+		 
+		 //menu
+		 g.setFont(font);
+		 for(int i = 0; i < options.length; i++) {
+				if(i == currentChoice) {
+					g.setColor(Color.RED);
+				}
+				else {
+					g.setColor(Color.BLACK);
+				}
+				g.drawString(options[i], 200, 185 + i * 20);
+			}
 
 	}
 
-	@Override
 	public void keyPressed(int k) {
-		//
+		if(k == KeyEvent.VK_ENTER){
+			choice();
+		}
+		if(k == KeyEvent.VK_UP) {
+			currentChoice--;
+			if(currentChoice == -1) {
+				currentChoice = options.length - 1;
+			}
+		}
+		if(k == KeyEvent.VK_DOWN) {
+			currentChoice++;
+			if(currentChoice == options.length) {
+				currentChoice = 0;
+			}
+		}
+
+	}
+
+	public void keyReleased(int k) {}
+	
+	private void choice()
+	{
+		if(currentChoice == 0) {
+			
+		}
+		if(currentChoice == 1) {
+			
+		}
+		if(currentChoice == 2) {
+			
+		}
+		if(currentChoice == 3) {
+			System.exit(0);
+		}
 
 	}
 
 	@Override
-	public void keyReleased(int k) {
+	public void update() {
+		// TODO Auto-generated method stub
 		
+	}
 
-	}
-	private void choice(int ch)
-	{
-		switch(ch)
-		{
-			case 1:
-				lm.loadLevel(1); //To będzie przycisk nowa gra
-		}
-	}
 
 }
+

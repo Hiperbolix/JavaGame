@@ -8,7 +8,7 @@ public class LevelManager {
 	protected final int LVLAMMOUNT = 1;
 	protected final int MENUID =0;
 	
-	LevelManager()
+	public LevelManager()
 	{
 		lvl =new Level[LVLAMMOUNT];
 		currentLvl = MENUID;
@@ -26,6 +26,26 @@ public class LevelManager {
 				break;
 		}
 		
+	}
+	
+	public void draw(java.awt.Graphics2D g) {
+		try {
+			lvl[currentLvl].draw(g);
+		} catch(Exception e) {}
+	}
+	
+	public void keyPressed(int k) {
+		lvl[currentLvl].keyPressed(k);
+	}
+	
+	public void keyReleased(int k) {
+		lvl[currentLvl].keyReleased(k);
+	}
+	
+	public void update() {
+		try {
+			lvl[currentLvl].update();
+		} catch(Exception e) {}
 	}
 	
 	
