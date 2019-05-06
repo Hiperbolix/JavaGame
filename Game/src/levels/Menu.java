@@ -36,7 +36,6 @@ public class Menu extends Level {
 	
 	public void start() {}
 	
-	
 
 	public void draw(Graphics2D g) {
 		//background
@@ -85,7 +84,7 @@ public class Menu extends Level {
 	private void choice()
 	{
 		if(currentChoice == 0) {
-			
+			lm.setState(LevelManager.LEVEL1);
 		}
 		if(currentChoice == 1) {
 			
