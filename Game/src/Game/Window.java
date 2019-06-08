@@ -15,7 +15,7 @@ public class Window extends JPanel implements Runnable, KeyListener{
 	
 	public final String title ="...";
 	public static final int WIDTH_P = 800;
-	public static final int HEIGHT_P = 650;
+	public static final int HEIGHT_P = 640;
 
 	
 	// Watki
@@ -112,7 +112,7 @@ public class Window extends JPanel implements Runnable, KeyListener{
 	}
 	private void drawToScreen() {
 		Graphics g2 = getGraphics();
-		g2.drawImage(image, 0, 0, WIDTH_P*2, HEIGHT_P*2, null);
+		g2.drawImage(image, 0, 0, WIDTH_P, HEIGHT_P, null);
 		g2.dispose();
 	}
 }

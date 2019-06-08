@@ -5,27 +5,36 @@ public class LevelManager {
 	protected Level[] lvl;
 	protected int currentLvl;
 	
-	protected final int LVLAMMOUNT = 1;
-	protected final int MENUID =0;
+	public static final int LVLAMMOUNT = 3;
+	public static final int MENUID =0;
+	public static final int LVL1ID=1;
+	public static final int DEBUGID=2;
 	
 	public LevelManager()
 	{
 		lvl =new Level[LVLAMMOUNT];
 		currentLvl = MENUID;
+		//currentLvl = DEBUGID;
 		loadLevel(currentLvl);
 	}
 
-	protected void loadLevel(int i) {
-		switch(i)
-		{
-			case 1/* Level1ID? */:
-				//Jak zrobisz pierwszy poziom to tu wstaw
-				break;
-			default:
-				lvl[i]= new Menu(this);
-				break;
-		}
+	protected void loadLevel(int lvlN) {
 		
+		if(lvlN == MENUID) lvl[lvlN] = new Menu(this);
+		if(lvlN == LVL1ID) lvl[lvlN] = new Level1(this);
+		if(lvlN == DEBUGID) lvl[lvlN] = new Debug(this);
+		
+	}
+	
+	private void unloadLevel(int state) {
+		lvl[state] = null;
+	}
+	
+	public void setLvl(int lvl) {
+		unloadLevel(currentLvl);
+		currentLvl = lvl;
+		loadLevel(currentLvl);
+		//gameStates[currentState].init();
 	}
 	
 	public void draw(java.awt.Graphics2D g) {

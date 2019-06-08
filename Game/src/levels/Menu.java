@@ -3,7 +3,7 @@ package levels;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-import Game.Background;
+import sprites.Background;
 
 public class Menu extends Level {
 	private Background bg;
@@ -14,17 +14,17 @@ public class Menu extends Level {
 	private Font font;
 	
 	private int currentChoice = 0;
-	private String[] options= {"Nowa Gra", "Wczytaj Grę", "Opcje", "Wyjście"};
+	private String[] options= {"Nowa Gra", "DEBUG", "Opcje", "Wyjście"};
 	
 
 	public Menu (LevelManager lm) {
 		this.lm = lm;
 
 		try {
-			bg = new Background("Image/menubg1.jpg");
+			bg = new Background("/menubg1.jpg");
 			
 			titleColor = new Color(128, 0, 128);
-			titleFont = new Font("Utopia", Font.PLAIN, 42);
+			titleFont = new Font("FreeSans", Font.PLAIN, 42);
 			
 			font = new Font("FreeSans", Font.PLAIN, 24);
 			
@@ -85,13 +85,13 @@ public class Menu extends Level {
 	private void choice()
 	{
 		if(currentChoice == 0) {
-			
+			lm.setLvl(LevelManager.LVL1ID);
 		}
 		if(currentChoice == 1) {
-			
+			lm.setLvl(LevelManager.DEBUGID);
 		}
 		if(currentChoice == 2) {
-			
+			System.out.println("nie wiem");
 		}
 		if(currentChoice == 3) {
 			System.exit(0);
