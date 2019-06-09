@@ -1,10 +1,19 @@
-package levels;
+package menu;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
 import Game.Window;
+import levels.Level;
+import levels.LevelManager;
 import sprites.Background;
+
+import java.awt.*;
+import java.awt.event.*;
+
+import Game.*;
+import levels.*;
+
 
 public class Menu extends Level {
 	private Background bg;
@@ -14,8 +23,6 @@ public class Menu extends Level {
 	
 	private Font font;
 	
-	private int fontSize=36;
-	
 	private int currentChoice = 0;
 	private String[] options= {"Nowa Gra", "DEBUG", "Opcje", "Wyjście"};
 	
@@ -24,12 +31,11 @@ public class Menu extends Level {
 		this.lm = lm;
 
 		try {
-			bg = new Background("/menubg1.jpg");
+			bg = new Background("Image/menubg1.jpg");
 			
 			titleColor = new Color(128, 0, 128);
-			titleFont = new Font("FreeSans", Font.PLAIN, fontSize*2);
-			
-			font = new Font("FreeSans", Font.PLAIN, fontSize);
+			titleFont = new Font("Utopia", Font.PLAIN, 72);
+			font = new Font("FreeSans", Font.PLAIN, 40);
 			
 		}
 		catch(Exception e) {
@@ -47,7 +53,7 @@ public class Menu extends Level {
 		//title
 		 g.setColor(titleColor);
 		 g.setFont(titleFont);
-		 g.drawString("Ucieczka z Javy", 50, fontSize*3);
+		 g.drawString("Ucieczka z Javy", 50, 70);
 		 
 		 //menu
 		 g.setFont(font);
@@ -58,7 +64,7 @@ public class Menu extends Level {
 				else {
 					g.setColor(Color.BLACK);
 				}
-				g.drawString(options[i], Window.WIDTH_P - fontSize*10, fontSize*7 + i * fontSize);
+				g.drawString(options[i], 180, 350 + i * 35);
 			}
 
 	}
@@ -87,13 +93,14 @@ public class Menu extends Level {
 	private void choice()
 	{
 		if(currentChoice == 0) {
-			lm.setLvl(LevelManager.LVL1ID);
+			lm.setState(LevelManager.LVL1ID);
+
 		}
 		if(currentChoice == 1) {
 			lm.setLvl(LevelManager.DEBUGID);
 		}
 		if(currentChoice == 2) {
-			System.out.println("nie wiem");
+			lm.setState(LevelManager.SETTINGS_P);
 		}
 		if(currentChoice == 3) {
 			System.exit(0);
@@ -101,12 +108,7 @@ public class Menu extends Level {
 
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void update() {}
 
 
 }
-

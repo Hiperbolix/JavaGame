@@ -1,15 +1,24 @@
 package levels;
 
+import menu.*;
+
 public class LevelManager {
 
 	
 	protected Level[] lvl;
 	protected int currentLvl;
 	
-	public static final int LVLAMMOUNT = 3;
-	public static final int MENUID =0;
-	public static final int LVL1ID=1;
-	public static final int DEBUGID=2;
+	public static final int LVLAMMOUNT = 8;
+	
+	public static final int MENUID = 0;
+	public static final int LVL1ID = 1;
+	public static final int DEBUGID = 2;
+	public static final int MENU_E = 3;	
+	public static final int SETTINGS_E = 4;
+	public static final int MENU_R = 5;	
+	public static final int SETTINGS_R = 6;
+	public static final int SETTINGS_P = 7;
+
 	
 	public LevelManager()
 	{
@@ -24,6 +33,12 @@ public class LevelManager {
 		if(lvlN == MENUID) lvl[lvlN] = new Menu(this);
 		if(lvlN == LVL1ID) lvl[lvlN] = new Level1(this);
 		if(lvlN == DEBUGID) lvl[lvlN] = new Debug(this);
+		if(lvlN == SETTINGS_P) lvl[lvlN] = new SettingsP(this);
+		if(lvlN == MENU_E) lvl[lvlN] = new MenuE(this);
+		if(lvlN == SETTINGS_E) lvl[lvlN] = new SettingsE(this);
+		if(lvlN == MENU_R) lvl[lvlN] = new MenuR(this);
+		if(lvlN == SETTINGS_R) lvl[lvlN] = new SettingsR(this);
+
 		
 	}
 	
