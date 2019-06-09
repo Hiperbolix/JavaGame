@@ -36,7 +36,6 @@ public class Menu extends Level {
 	
 	public void start() {}
 	
-	
 
 	public void draw(Graphics2D g) {
 		//background
@@ -85,7 +84,11 @@ public class Menu extends Level {
 	private void choice()
 	{
 		if(currentChoice == 0) {
+<<<<<<< HEAD
 			lm.setLvl(LevelManager.LVL1ID);
+=======
+			lm.setState(LevelManager.LEVEL1);
+>>>>>>> branch 'master' of https://github.com/Hiperbolix/JavaGame.git
 		}
 		if(currentChoice == 1) {
 			lm.setLvl(LevelManager.DEBUGID);
