@@ -13,7 +13,7 @@ public class Window extends JPanel implements Runnable, KeyListener{
 
 	private static final long serialVersionUID = 1L;
 	
-	public final String title ="...";
+	public final String title ="Ucieczka z Javy";
 	public static final int WIDTH_P = 800;
 	public static final int HEIGHT_P = 640;
 

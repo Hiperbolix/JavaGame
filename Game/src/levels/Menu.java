@@ -3,6 +3,7 @@ package levels;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+import Game.Window;
 import sprites.Background;
 
 public class Menu extends Level {
@@ -12,6 +13,8 @@ public class Menu extends Level {
 	private Font titleFont;
 	
 	private Font font;
+	
+	private int fontSize=36;
 	
 	private int currentChoice = 0;
 	private String[] options= {"Nowa Gra", "DEBUG", "Opcje", "Wyjście"};
@@ -24,9 +27,9 @@ public class Menu extends Level {
 			bg = new Background("/menubg1.jpg");
 			
 			titleColor = new Color(128, 0, 128);
-			titleFont = new Font("FreeSans", Font.PLAIN, 42);
+			titleFont = new Font("FreeSans", Font.PLAIN, fontSize*2);
 			
-			font = new Font("FreeSans", Font.PLAIN, 24);
+			font = new Font("FreeSans", Font.PLAIN, fontSize);
 			
 		}
 		catch(Exception e) {
@@ -44,7 +47,7 @@ public class Menu extends Level {
 		//title
 		 g.setColor(titleColor);
 		 g.setFont(titleFont);
-		 g.drawString("...", 50, 70);
+		 g.drawString("Ucieczka z Javy", 50, fontSize*3);
 		 
 		 //menu
 		 g.setFont(font);
@@ -55,7 +58,7 @@ public class Menu extends Level {
 				else {
 					g.setColor(Color.BLACK);
 				}
-				g.drawString(options[i], 200, 185 + i * 20);
+				g.drawString(options[i], Window.WIDTH_P - fontSize*10, fontSize*7 + i * fontSize);
 			}
 
 	}

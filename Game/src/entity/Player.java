@@ -25,6 +25,7 @@ public class Player extends Entity {
 		
 
 		private ArrayList<BufferedImage[]> sprites;
+		private double jumpStart;
 		
 		public Player(SpriteMap sm) {
 			
@@ -37,10 +38,11 @@ public class Player extends Entity {
 			
 			acceleration=0.8;
 			//vX = 0.5;
-			vMax= 2.5;
+			vMax=5;
 			deceleration = 0.4;
 			currentG = 0.1;
 			maxFall = 4.0;
+			jumpStart =-10;
 			
 			//facingRight = true;
 			
@@ -106,13 +108,17 @@ public class Player extends Entity {
 					}
 				}
 			}
+			if(jumping && !falling) {
+				dy = jumpStart;
+				falling = true;
+			}
 		}
 		
 		public void update() {
 			
 			// update position
 			getNextPosition();
-			checkTileMapCollision();
+			checkMapCollision();
 			setPosition(xtemp, ytemp);
 			
 			animation.setFrames(sprites.get(0));
@@ -120,6 +126,9 @@ public class Player extends Entity {
 			width = 30;
 			
 			animation.update();
+			
+			System.out.println(x);
+			System.out.println(y);
 		}
 		
 		public void draw(Graphics2D g) {

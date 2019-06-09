@@ -93,7 +93,7 @@ public abstract class Entity {
 		
 	}
 	
-	public void checkTileMapCollision() {
+	public void checkMapCollision() {
 		
 		currCol = (int)x / spriteSize;
 		currRow = (int)y / spriteSize;
@@ -105,6 +105,7 @@ public abstract class Entity {
 		ytemp = y;
 		
 		calculateCorners(x, ydest);
+		
 		if(dy < 0) {
 			if(topLeft || topRight) {
 				dy = 0;

@@ -30,7 +30,7 @@ public class Debug extends Level {
 		spriteMap.setPosition(0, 0);
 		
 		player = new Player(spriteMap);
-		player.setPosition(300, 100);
+		player.setPosition(300, 200);
 		
 		bg = new Background("/Sprites/placeholderbg.gif");
 		
@@ -41,8 +41,8 @@ public class Debug extends Level {
 	public void update() {
 		player.update();
 		spriteMap.setPosition(
-			Window.WIDTH / 2 - player.getx(),
-			Window.HEIGHT / 2 - player.gety()
+			Window.WIDTH_P / 2 - player.getx(),
+			Window.HEIGHT_P / 2 - player.gety()
 		);
 		
 		// set background
@@ -72,7 +72,7 @@ public class Debug extends Level {
 		if(k == KeyEvent.VK_A) player.setLeft(true);
 		if(k == KeyEvent.VK_D) player.setRight(true);
 		if(k == KeyEvent.VK_UP) player.setUp(true);
-		if(k == KeyEvent.VK_DOWN) player.setDown(true);
+		if(k == KeyEvent.VK_S) player.setDown(true);
 		if(k == KeyEvent.VK_W) player.setJumping(true);
 	}
 	
@@ -80,7 +80,7 @@ public class Debug extends Level {
 		if(k == KeyEvent.VK_A) player.setLeft(false);
 		if(k == KeyEvent.VK_D) player.setRight(false);
 		if(k == KeyEvent.VK_UP) player.setUp(false);
-		if(k == KeyEvent.VK_DOWN) player.setDown(false);
+		if(k == KeyEvent.VK_S) player.setDown(false);
 		if(k == KeyEvent.VK_W) player.setJumping(false);
 	}
 
