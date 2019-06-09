@@ -2,6 +2,7 @@ package levels;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 
 import Game.Window;
 import entity.Player;
@@ -67,16 +68,20 @@ public class Debug extends Level {
 
 	}
 
-	@Override
 	public void keyPressed(int k) {
-		// TODO Auto-generated method stub
-
+		if(k == KeyEvent.VK_A) player.setLeft(true);
+		if(k == KeyEvent.VK_D) player.setRight(true);
+		if(k == KeyEvent.VK_UP) player.setUp(true);
+		if(k == KeyEvent.VK_DOWN) player.setDown(true);
+		if(k == KeyEvent.VK_W) player.setJumping(true);
 	}
-
-	@Override
+	
 	public void keyReleased(int k) {
-		// TODO Auto-generated method stub
-
+		if(k == KeyEvent.VK_A) player.setLeft(false);
+		if(k == KeyEvent.VK_D) player.setRight(false);
+		if(k == KeyEvent.VK_UP) player.setUp(false);
+		if(k == KeyEvent.VK_DOWN) player.setDown(false);
+		if(k == KeyEvent.VK_W) player.setJumping(false);
 	}
 
 }

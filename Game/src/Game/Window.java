@@ -111,11 +111,7 @@ public class Window extends JPanel implements Runnable, KeyListener{
 	}
 	private void drawToScreen() {
 		Graphics g2 = getGraphics();
-<<<<<<< HEAD
 		g2.drawImage(image, 0, 0, WIDTH_P, HEIGHT_P, null);
-=======
-		g2.drawImage(image, 0, 0, WIDTH_P * 2, HEIGHT_P * 2, null);
->>>>>>> branch 'master' of https://github.com/Hiperbolix/JavaGame.git
 		g2.dispose();
 	}
 }

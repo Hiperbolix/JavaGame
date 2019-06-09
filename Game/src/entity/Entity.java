@@ -39,6 +39,7 @@ public abstract class Entity {
 	protected double currentG;
 	protected double maxFall;
 	// movement logic
+	protected boolean facingright;
 	protected boolean left;
 	protected boolean right;
 	protected boolean up;
@@ -174,6 +175,7 @@ public abstract class Entity {
 		ymap = spriteMap.gety();
 	}
 	
+
 	public void setLeft(boolean b) { left = b; }
 	public void setRight(boolean b) { right = b; }
 	public void setUp(boolean b) { up = b; }
