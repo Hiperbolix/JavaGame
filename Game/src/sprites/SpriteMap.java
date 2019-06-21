@@ -47,8 +47,8 @@ public class SpriteMap {
 		this.spriteSize = tileSize;
 		numRowsToDraw = Window.HEIGHT_P / tileSize + 2;
 		numColsToDraw = Window.WIDTH_P / tileSize + 2;
-		System.out.println(Window.HEIGHT_P);
-		tween = 1;
+		//System.out.println(Window.HEIGHT_P);
+		//tween = 1;
 	}
 public void loadTiles(String s) {
 		
@@ -58,7 +58,6 @@ public void loadTiles(String s) {
 				getClass().getResourceAsStream(s)
 			);
 			numTilesAcross = tileset.getWidth() / spriteSize;
-			//sprites = new Sprite[2][numTilesAcross];
 			sprites = new Sprite[2][numTilesAcross];
 			//System.out.println(numTilesAcross);
 			
@@ -168,7 +167,6 @@ public void loadTiles(String s) {
 				g.drawImage(sprites[r][c].getImage(),(int)x + col * spriteSize,(int)y + row * spriteSize,null);
 				
 			}
-			//System.out.println(numCols);
 		}
 		
 	}

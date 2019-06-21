@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
-import Game.Window;
+import Game.*;
 import entity.Player;
 import sprites.Background;
 import sprites.SpriteMap;
@@ -24,17 +24,16 @@ public class Debug extends Level {
 	
 	public void start() {
 		
-		spriteMap = new SpriteMap(80);
-		spriteMap.loadTiles("/Sprites/placeholderset.gif");
-		spriteMap.loadMap("/Maps/level1.map");
+		spriteMap = new SpriteMap(75);
+		spriteMap.loadTiles("/Tilesets/tileset1pp.png");
+		spriteMap.loadMap("/Map/level1.map");
 		spriteMap.setPosition(0, 0);
+		spriteMap.setTween(1);
+		
+		bg = new Background("/Backgrounds/clouds.jpg");
 		
 		player = new Player(spriteMap);
-		player.setPosition(300, 200);
-		
-		bg = new Background("/Sprites/placeholderbg.gif");
-		
-
+		player.setPosition(100, 450);
 	}
 
 	@Override

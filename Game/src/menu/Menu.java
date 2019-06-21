@@ -3,16 +3,10 @@ package menu;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-import Game.Window;
 import levels.Level;
 import levels.LevelManager;
 import sprites.Background;
-
-import java.awt.*;
-import java.awt.event.*;
-
 import Game.*;
-import levels.*;
 
 
 public class Menu extends Level {

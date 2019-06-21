@@ -3,8 +3,8 @@ package levels;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
-import entity.Animation;
-import Game.Window;
+
+import Game.*;
 import sprites.Background;
 import sprites.SpriteMap;
 import entity.Player;
@@ -31,12 +31,12 @@ public class Level1 extends Level {
 	public void start() {
 		
 		spriteMap = new SpriteMap(40);
-		spriteMap.loadTiles("/Sprites/grasstileset.gif");
-		spriteMap.loadMap("/Maps/level1.map");
+		spriteMap.loadTiles("Image/grasstileset.gif");
+		spriteMap.loadMap("Image/level1.map");
 		spriteMap.setPosition(0, 0);
 		spriteMap.setTween(1);
 		
-		bg = new Background("/Sprites/placeholderbg.gif");
+		//bg = new Background("Image/placeholderbg.gif");
 		
 		player = new Player(spriteMap);
 		player.setPosition(100, 100);

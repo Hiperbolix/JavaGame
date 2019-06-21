@@ -29,7 +29,7 @@ public class Animation {
 	public void update() {
 		
 		if(delay == -1) return;
-		System.out.println(frames.length);
+		//System.out.println(frames.length);
 		
 		long elapsed = (System.nanoTime() - startTime) / 1000000;
 		if(elapsed > delay) {

@@ -1,13 +1,13 @@
 package entity;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.awt.*;
+import java.awt.image.*;
+import java.util.*;
 
-import javax.imageio.ImageIO;
+import javax.imageio.*;
 
-import sprites.SpriteMap;
+import sprites.*;
+
 
 
 public class Player extends Entity {
@@ -25,7 +25,6 @@ public class Player extends Entity {
 		
 
 		private ArrayList<BufferedImage[]> sprites;
-		private double jumpStart;
 		
 		public Player(SpriteMap sm) {
 			
@@ -38,11 +37,10 @@ public class Player extends Entity {
 			
 			acceleration=0.8;
 			//vX = 0.5;
-			vMax=5;
+			vMax= 2.5;
 			deceleration = 0.4;
 			currentG = 0.1;
 			maxFall = 4.0;
-			jumpStart =-10;
 			
 			//facingRight = true;
 			
@@ -53,7 +51,7 @@ public class Player extends Entity {
 				
 				BufferedImage spritesheet = ImageIO.read(
 					getClass().getResourceAsStream(
-						"/Sprites/player.gif"
+							"/Player/cat1.png"
 					)
 				);
 				BufferedImage[] bi =new BufferedImage[1];
@@ -108,17 +106,13 @@ public class Player extends Entity {
 					}
 				}
 			}
-			if(jumping && !falling) {
-				dy = jumpStart;
-				falling = true;
-			}
 		}
 		
 		public void update() {
 			
 			// update position
 			getNextPosition();
-			checkMapCollision();
+			checkTileMapCollision();
 			setPosition(xtemp, ytemp);
 			
 			animation.setFrames(sprites.get(0));
@@ -126,9 +120,6 @@ public class Player extends Entity {
 			width = 30;
 			
 			animation.update();
-			
-			System.out.println(x);
-			System.out.println(y);
 		}
 		
 		public void draw(Graphics2D g) {
@@ -140,3 +131,5 @@ public class Player extends Entity {
 		}
 		
 }
+
+

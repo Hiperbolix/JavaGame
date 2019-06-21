@@ -23,14 +23,15 @@ public class LevelManager {
 	public LevelManager()
 	{
 		lvl =new Level[LVLAMMOUNT];
-		currentLvl = MENUID;
-		//currentLvl = DEBUGID;
+		//currentLvl = MENUID;
+		currentLvl = DEBUGID;
+		//currentLvl.currentLvl = MENU_R;
 		loadLevel(currentLvl);
 	}
 
 	protected void loadLevel(int lvlN) {
 		
-		if(lvlN == MENUID) lvl[lvlN] = new Menu(this);
+		if(lvlN == MENUID) lvl[lvlN] = new MenuP(this);
 		if(lvlN == LVL1ID) lvl[lvlN] = new Level1(this);
 		if(lvlN == DEBUGID) lvl[lvlN] = new Debug(this);
 		if(lvlN == SETTINGS_P) lvl[lvlN] = new SettingsP(this);

@@ -1,10 +1,9 @@
 package entity;
 
-import java.awt.Rectangle;
-
-import entity.Animation;
-import Game.Window;
+import java.awt.*;
 import sprites.*;
+import Game.Window;
+
 
 public abstract class Entity {
 	//position
@@ -93,7 +92,7 @@ public abstract class Entity {
 		
 	}
 	
-	public void checkMapCollision() {
+	public void checkTileMapCollision() {
 		
 		currCol = (int)x / spriteSize;
 		currRow = (int)y / spriteSize;
@@ -105,7 +104,6 @@ public abstract class Entity {
 		ytemp = y;
 		
 		calculateCorners(x, ydest);
-		
 		if(dy < 0) {
 			if(topLeft || topRight) {
 				dy = 0;
@@ -209,3 +207,4 @@ public abstract class Entity {
 	
 
 }
+
