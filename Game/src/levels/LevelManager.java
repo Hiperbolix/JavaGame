@@ -25,7 +25,6 @@ public class LevelManager {
 		lvl =new Level[LVLAMMOUNT];
 		//currentLvl = MENUID;
 		currentLvl = DEBUGID;
-		//currentLvl.currentLvl = MENU_R;
 		loadLevel(currentLvl);
 	}
 
