@@ -23,8 +23,8 @@ public class LevelManager {
 	public LevelManager()
 	{
 		lvl =new Level[LVLAMMOUNT];
-		//currentLvl = MENUID;
-		currentLvl = DEBUGID;
+		currentLvl = MENUID;
+		//currentLvl = DEBUGID;
 		loadLevel(currentLvl);
 	}
 

@@ -27,7 +27,7 @@ public class SettingsE extends Level{
 		this.lm = lm;
 
 		try {
-			bg = new Background("Image/menubg1.jpg");
+			bg = new Background("/Backgrounds/menubg1.jpg");
 			
 			titleColor = new Color(128, 0, 128);
 			titleFont = new Font("Utopia", Font.PLAIN, 72);

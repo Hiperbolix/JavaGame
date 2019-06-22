@@ -23,8 +23,12 @@ public class Player extends Entity {
 		private static final int JUMPING = 2;
 		private static final int FALLING = 3;
 		
+		BufferedImage cat1, cat2, cat3, cat4, cat5;
+		BufferedImage[] bi1, bi2;
+		
 
 		private ArrayList<BufferedImage[]> sprites;
+		
 		
 		public Player(SpriteMap sm) {
 			
@@ -35,7 +39,7 @@ public class Player extends Entity {
 			cwidth = 60;
 			cheight = 60;
 			
-			acceleration=0.8;
+			acceleration=0.5;
 			//vX = 0.5;
 			vMax= 2.5;
 			deceleration = 0.4;
@@ -49,17 +53,23 @@ public class Player extends Entity {
 			// load sprites
 			try {
 				
-				BufferedImage spritesheet = ImageIO.read(
-					getClass().getResourceAsStream(
-							"/Player/cat1.png"
-					)
-				);
-				BufferedImage[] bi =new BufferedImage[1];
-				bi[0]=spritesheet;
+				cat1 = ImageIO.read(getClass().getResourceAsStream("/Player/catspr.png"));
+				cat2 = ImageIO.read(getClass().getResourceAsStream("/Player/catspr2.png"));
+				cat3 = ImageIO.read(getClass().getResourceAsStream("/Player/catslew.png"));
+				cat4 = ImageIO.read(getClass().getResourceAsStream("/Player/catslew2.png"));
+				cat5 = ImageIO.read(getClass().getResourceAsStream("/Player/catsie.png"));
+				
+				bi1 =new BufferedImage[2];
+				bi2 =new BufferedImage[2];
+				bi1[0]=cat1;
+				bi1[1]=cat2;
+				bi2[0]=cat3;
+				bi2[1]=cat4;
 				
 				sprites = new ArrayList<BufferedImage[]>();
 				
-				sprites.add(bi);
+				sprites.add(bi1);
+				//sprites.add(bi2);
 					
 				
 			}
@@ -68,7 +78,7 @@ public class Player extends Entity {
 			}
 			animation = new Animation();
 			currentAction = IDLE;
-			animation.setFrames(sprites.get(0));
+			animation.setFrames(sprites.get(IDLE));
 			animation.setDelay(400);
 			
 		}
@@ -84,6 +94,7 @@ public class Player extends Entity {
 				dx -= acceleration;
 				if(dx < -vMax) {
 					dx = -acceleration;
+					
 				}
 			}
 			else if(right) {
@@ -95,6 +106,7 @@ public class Player extends Entity {
 			else {
 				if(dx > 0) {
 					dx -= deceleration;
+					
 					if(dx < 0) {
 						dx = 0;
 					}
@@ -126,7 +138,10 @@ public class Player extends Entity {
 			
 			setMapPosition();
 			
-			super.draw(g);
+			//super.draw(g);
+			if(dx<0) g.drawImage(cat3, (int) x, (int) y, null);
+			if(dx==0) g.drawImage(cat5, (int) x, (int) y, null);
+			if(dx>0) g.drawImage(cat1, (int) x, (int) y, null);
 			
 		}
 		
