@@ -8,7 +8,7 @@ public class LevelManager {
 	protected Level[] lvl;
 	protected int currentLvl;
 	
-	public static final int LVLAMMOUNT = 8;
+public static final int LVLAMMOUNT = 10;
 	
 	public static final int MENUID = 0;
 	public static final int LVL1ID = 1;
@@ -18,13 +18,15 @@ public class LevelManager {
 	public static final int MENU_R = 5;	
 	public static final int SETTINGS_R = 6;
 	public static final int SETTINGS_P = 7;
+	public static final int LVL2 = 8;
+	public static final int LVL3 = 9;
 
 	
 	public LevelManager()
 	{
 		lvl =new Level[LVLAMMOUNT];
 		currentLvl = MENUID;
-		//currentLvl = DEBUGID;
+		//currentLvl = LVL1ID;
 		loadLevel(currentLvl);
 	}
 
@@ -38,9 +40,12 @@ public class LevelManager {
 		if(lvlN == SETTINGS_E) lvl[lvlN] = new SettingsE(this);
 		if(lvlN == MENU_R) lvl[lvlN] = new MenuR(this);
 		if(lvlN == SETTINGS_R) lvl[lvlN] = new SettingsR(this);
+		if(lvlN == LVL2) lvl[lvlN] = new Level2(this);
+		if(lvlN == LVL3) lvl[lvlN] = new Level3(this);
 
 		
 	}
+	
 	
 	private void unloadLevel(int state) {
 		lvl[state] = null;

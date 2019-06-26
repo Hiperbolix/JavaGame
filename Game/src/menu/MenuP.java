@@ -16,7 +16,7 @@ public class MenuP extends Level {
 	private Font font;
 	
 	private int currentChoice = 0;
-	private String[] options= {"Nowa Gra", "DEBUG", "Opcje", "Wyjście"};
+	private String[] options= {"Nowa Gra", "Wczytaj Grę", "Opcje", "Wyjście"};
 	
 
 	public MenuP (LevelManager lm) {
@@ -89,7 +89,7 @@ public class MenuP extends Level {
 
 		}
 		if(currentChoice == 1) {
-			lm.setLvl(LevelManager.DEBUGID);
+			lm.setLvl(LevelManager.LVL1ID);
 		}
 		if(currentChoice == 2) {
 			lm.setState(LevelManager.SETTINGS_P);

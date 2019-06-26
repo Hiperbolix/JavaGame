@@ -3,26 +3,18 @@ package levels;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
-
-import Game.*;
-import sprites.Background;
-import sprites.SpriteMap;
-import entity.Player;
-
+import Game.Window;
+import entity.*;
+import sprites.*;
 
 public class Level1 extends Level {
+	
 
 	private SpriteMap spriteMap;
 	private Background bg;
 	
 	private Player player;
-	
-	//private ArrayList<Enemy> enemies;
-	
-	//private HUD hud;
-	
-	//private AudioPlayer bgMusic;
-	
+
 	public Level1(LevelManager lm) {
 		this.lm = lm;
 		start();
@@ -30,108 +22,69 @@ public class Level1 extends Level {
 	
 	public void start() {
 		
-		spriteMap = new SpriteMap(40);
-		spriteMap.loadTiles("Image/grasstileset.gif");
-		spriteMap.loadMap("Image/level1.map");
+		spriteMap = new SpriteMap(75);
+		spriteMap.loadTiles("/Tilesets/tileset1.png");
+		spriteMap.loadMap("/Maps/level1.map");
 		spriteMap.setPosition(0, 0);
 		spriteMap.setTween(1);
 		
-		//bg = new Background("Image/placeholderbg.gif");
+		bg = new Background("/Backgrounds/clouds.jpg");
 		
 		player = new Player(spriteMap);
-		player.setPosition(100, 100);
-		/*
-		populateEnemies();
+		player.setPosition(100, 200);
 		
-		hud = new HUD(player);
 		
-		bgMusic = new AudioPlayer("/Music/level1-1.mp3");
-		bgMusic.play();
-		*/
 		
+
 	}
-	/*
-	private void populateEnemies() {
-		
-		enemies = new ArrayList<Enemy>();
-		
-	}
-	*/
-	
+
+	@Override
 	public void update() {
-		
-		// update player
 		player.update();
 		spriteMap.setPosition(
-			Window.WIDTH / 2 - player.getx(),
-			Window.HEIGHT / 2 - player.gety()
+			Window.WIDTH_P / 2 - player.getx(),
+			Window.HEIGHT_P / 2 - player.gety()
 		);
 		
 		// set background
 		bg.setPosition(spriteMap.getx(), spriteMap.gety());
-		
-		// attack enemies
-		//player.checkAttack(enemies);
-		
-		// update all enemies
-		/*
-		for(int i = 0; i < enemies.size(); i++) {
-			Enemy e = enemies.get(i);
-			e.update();
-			if(e.isDead()) {
-				enemies.remove(i);
-				i--;
-			}
-		}
-		
-		*/
-		
+
 	}
-	
+
+	@Override
 	public void draw(Graphics2D g) {
-		
-		// draw bg
+		/*
+		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, Window.WIDTH_P, Window.HEIGHT_P);
+		g.setColor(Color.RED);
+		g.fillRect(1,1,10,10);
+		//System.out.println("Jestem tu");
+		// draw tilemap
+		 */
 		bg.draw(g);
 		
-		// draw spriteMap
 		spriteMap.draw(g);
 		
-		// draw player
 		player.draw(g);
-		
-		// draw enemies
-		/*
-		for(int i = 0; i < enemies.size(); i++) {
-			enemies.get(i).draw(g);
-		}
-		
-		// draw explosions
-		for(int i = 0; i < explosions.size(); i++) {
-			explosions.get(i).setMapPosition(
-				(int)spriteMap.getx(), (int)spriteMap.gety());
-			explosions.get(i).draw(g);
-		}
-		
-		// draw hud
-		hud.draw(g);
-		*/
-		
+
 	}
-	
+
 	public void keyPressed(int k) {
-		if(k == KeyEvent.VK_LEFT) player.setLeft(true);
-		if(k == KeyEvent.VK_RIGHT) player.setRight(true);
+		if(k == KeyEvent.VK_A) player.setLeft(true);
+		if(k == KeyEvent.VK_D) player.setRight(true);
 		if(k == KeyEvent.VK_UP) player.setUp(true);
-		if(k == KeyEvent.VK_DOWN) player.setDown(true);
+		if(k == KeyEvent.VK_S) player.setDown(true);
 		if(k == KeyEvent.VK_W) player.setJumping(true);
+		if(k == KeyEvent.VK_ENTER) System.exit(0);
 	}
 	
 	public void keyReleased(int k) {
-		if(k == KeyEvent.VK_LEFT) player.setLeft(false);
-		if(k == KeyEvent.VK_RIGHT) player.setRight(false);
+		if(k == KeyEvent.VK_A) player.setLeft(false);
+		if(k == KeyEvent.VK_D) player.setRight(false);
 		if(k == KeyEvent.VK_UP) player.setUp(false);
-		if(k == KeyEvent.VK_DOWN) player.setDown(false);
+		if(k == KeyEvent.VK_S) player.setDown(false);
 		if(k == KeyEvent.VK_W) player.setJumping(false);
 	}
 
 }
+
