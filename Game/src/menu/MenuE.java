@@ -16,7 +16,7 @@ public class MenuE extends Level {
 	private Font font;
 	
 	private int currentChoice = 0;
-	private String[] options= {"New Game", "Continue Game", "Settings", "Quit"};
+	private String[] options= {"*1 Level", "*2 Level", "*3 Level", "Settings", "Quit"};
 	
 
 	public MenuE (LevelManager lm) {
@@ -45,7 +45,7 @@ public class MenuE extends Level {
 		//title
 		 g.setColor(titleColor);
 		 g.setFont(titleFont);
-		 g.drawString("Ucieczka z Javy", 50, 70);
+		 g.drawString("Ucieczka z Javy", 70, 120);
 		 
 		 //menu
 		 g.setFont(font);
@@ -56,7 +56,7 @@ public class MenuE extends Level {
 				else {
 					g.setColor(Color.BLACK);
 				}
-				g.drawString(options[i], 180, 350 + i * 35);
+				g.drawString(options[i], 180, 320 + i * 35);
 			}
 
 	}
@@ -89,12 +89,15 @@ public class MenuE extends Level {
 
 		}
 		if(currentChoice == 1) {
-			lm.setState(LevelManager.LVL1ID);
+			lm.setLvl(LevelManager.LVL2);
 		}
 		if(currentChoice == 2) {
-			lm.setState(LevelManager.SETTINGS_E);
+			lm.setLvl(LevelManager.LVL3);
 		}
 		if(currentChoice == 3) {
+			lm.setState(LevelManager.SETTINGS_E);
+		}
+		if(currentChoice == 4) {
 			System.exit(0);
 		}
 

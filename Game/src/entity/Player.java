@@ -23,8 +23,8 @@ public class Player extends Entity {
 		private static final int JUMPING = 2;
 		private static final int FALLING = 3;
 		
-		BufferedImage cat1, cat2, cat3, cat4, cat5;
-		BufferedImage[] bi1, bi2;
+		BufferedImage cat1, cat2, cat3;
+		BufferedImage[] bi;
 		
 
 		private ArrayList<BufferedImage[]> sprites;
@@ -54,23 +54,19 @@ public class Player extends Entity {
 			// load sprites
 			try {
 				
-				cat1 = ImageIO.read(getClass().getResourceAsStream("/Player/catspr.png"));
-				cat2 = ImageIO.read(getClass().getResourceAsStream("/Player/catspr2.png"));
-				cat3 = ImageIO.read(getClass().getResourceAsStream("/Player/catslew.png"));
-				cat4 = ImageIO.read(getClass().getResourceAsStream("/Player/catslew2.png"));
-				cat5 = ImageIO.read(getClass().getResourceAsStream("/Player/catsie.png"));
+				cat1 = ImageIO.read(getClass().getResourceAsStream("/Player/catpraw.png"));
+				cat2 = ImageIO.read(getClass().getResourceAsStream("/Player/catlew.png"));
+				cat3 = ImageIO.read(getClass().getResourceAsStream("/Player/catsie.png"));
 				
-				bi1 =new BufferedImage[2];
-				bi2 =new BufferedImage[2];
-				bi1[0]=cat1;
-				bi1[1]=cat2;
-				bi2[0]=cat3;
-				bi2[1]=cat4;
+				bi =new BufferedImage[2];
+				bi[0]=cat1;
+				bi[1]=cat2;
+				
 				
 				sprites = new ArrayList<BufferedImage[]>();
 				
-				sprites.add(bi1);
-				//sprites.add(bi2);
+				sprites.add(bi);
+				
 					
 				
 			}
@@ -84,8 +80,8 @@ public class Player extends Entity {
 			
 		}
 		
-		public int getHealth() { return health; }
-		public int getMaxHealth() { return maxHealth; }
+		//public int getHealth() { return health; }
+		//public int getMaxHealth() { return maxHealth; }
 		
 		
 		private void getNextPosition() {
@@ -168,8 +164,8 @@ public class Player extends Entity {
 			setMapPosition();
 			
 			//super.draw(g);
-			if(dx<0) g.drawImage(cat3, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
-			if(dx==0) g.drawImage(cat5, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
+			if(dx<0) g.drawImage(cat2, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
+			if(dx==0) g.drawImage(cat3, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
 			if(dx>0) g.drawImage(cat1, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
 			
 		}
