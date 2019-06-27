@@ -35,9 +35,9 @@ public class Player extends Entity {
 			super(sm);
 			
 			width = 60;
-			height = 80;
-			cwidth = 60;
-			cheight = 60;
+			height = 180;
+			cwidth = 70;
+			cheight = 70;
 			
 			acceleration=0.5;
 			//vX = 0.5;
@@ -45,6 +45,7 @@ public class Player extends Entity {
 			deceleration = 0.4;
 			currentG = 0.1;
 			maxFall = 4.0;
+			JumpStart=-4;
 			
 			//facingRight = true;
 			
@@ -89,7 +90,7 @@ public class Player extends Entity {
 		
 		private void getNextPosition() {
 			
-			// movement
+			// x movement
 			if(left) {
 				dx -= acceleration;
 				if(dx < -vMax) {
@@ -118,6 +119,34 @@ public class Player extends Entity {
 					}
 				}
 			}
+			// y movement
+			/*
+			if(flying)
+			{
+				dy=flySpeed;
+				falling = true;
+			}
+			else {
+				if(jumping&& !falling)
+					{
+						System.out.println("Skok");
+						dy=JumpStart;
+						falling = true;
+					}
+				}
+			*/
+			if(jumping&& !falling)
+			{
+				System.out.println("Skok");
+				dy=JumpStart;
+				falling = true;
+			}
+			if(falling)
+			{
+				dy+=currentG;
+				if(dy>0) jumping=false;
+				if(dy>maxFall) dy=maxFall;
+			}
 		}
 		
 		public void update() {
@@ -129,7 +158,7 @@ public class Player extends Entity {
 			
 			animation.setFrames(sprites.get(0));
 			animation.setDelay(400);
-			width = 30;
+			//width = 30;
 			
 			animation.update();
 		}
@@ -139,9 +168,9 @@ public class Player extends Entity {
 			setMapPosition();
 			
 			//super.draw(g);
-			if(dx<0) g.drawImage(cat3, (int) x, (int) y, null);
-			if(dx==0) g.drawImage(cat5, (int) x, (int) y, null);
-			if(dx>0) g.drawImage(cat1, (int) x, (int) y, null);
+			if(dx<0) g.drawImage(cat3, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
+			if(dx==0) g.drawImage(cat5, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
+			if(dx>0) g.drawImage(cat1, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
 			
 		}
 		

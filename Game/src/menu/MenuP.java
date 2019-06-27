@@ -89,7 +89,7 @@ public class MenuP extends Level {
 
 		}
 		if(currentChoice == 1) {
-			lm.setLvl(LevelManager.LVL1ID);
+			lm.setLvl(LevelManager.LVL2);
 		}
 		if(currentChoice == 2) {
 			lm.setState(LevelManager.SETTINGS_P);

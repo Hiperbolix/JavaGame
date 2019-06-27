@@ -15,7 +15,7 @@ public class Window extends JPanel implements Runnable, KeyListener{
 	
 	public final String title ="Ucieczka z Javy";
 	public static final int WIDTH_P = 800;
-	public static final int HEIGHT_P = 640;
+	public static final int HEIGHT_P = 600;
 
 	
 	// Watki

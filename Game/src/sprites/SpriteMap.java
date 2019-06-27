@@ -121,8 +121,12 @@ public void loadTiles(String s) {
 	
 	public int getType(int row, int col) {
 		int rc = map[row][col];
-		if(rc==1) return 1;
-		else return 0;
+		int r = rc / numTilesAcross;
+		int c = rc % numTilesAcross;
+		//return sprites[r][c].getType();
+		//return Sprite.BLOCKED;
+		if (rc<2) return Sprite.NORMAL;
+		else return Sprite.BLOCKED;
 	}
 	
 	public void setTween(double d) { tween = d; }

@@ -37,6 +37,7 @@ public abstract class Entity {
 	protected double vMax;
 	protected double currentG;
 	protected double maxFall;
+	protected double JumpStart;
 	// movement logic
 	protected boolean facingright;
 	protected boolean left;
@@ -45,6 +46,7 @@ public abstract class Entity {
 	protected boolean down;
 	protected boolean jumping;
 	protected boolean falling;
+	protected boolean flying;
 	//sprite
 	protected SpriteMap spriteMap;
 	protected int spriteSize;

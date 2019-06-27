@@ -75,7 +75,7 @@ public class Level3 extends Level {
 		if(k == KeyEvent.VK_UP) player.setUp(true);
 		if(k == KeyEvent.VK_S) player.setDown(true);
 		if(k == KeyEvent.VK_W) player.setJumping(true);
-		if(k == KeyEvent.VK_ENTER) System.exit(0);
+		if(k == KeyEvent.VK_ESCAPE) System.exit(0);
 	}
 	
 	public void keyReleased(int k) {
