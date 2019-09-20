@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
 import Game.Window;
+import audio.AudioPlayer;
 import entity.*;
 import sprites.*;
 
@@ -14,6 +15,8 @@ public class Debug extends Level {
 	private Background bg;
 	
 	private Player player;
+	
+	private AudioPlayer bgMusic;
 
 	public Debug(LevelManager lm) {
 		this.lm = lm;
@@ -33,7 +36,8 @@ public class Debug extends Level {
 		player = new Player(spriteMap);
 		player.setPosition(400, 40);
 		
-		
+		bgMusic = new AudioPlayer("/Music/Quick.wav");
+		bgMusic.play();
 		
 
 	}
