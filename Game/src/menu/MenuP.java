@@ -16,7 +16,7 @@ public class MenuP extends Level {
 	private Font font;
 	
 	private int currentChoice = 0;
-	private String[] options= {"Nowa Gra", "Wczytaj Grę", "Opcje", "Wyjście"};
+	private String[] options= {"*1 Poziom", "*2 Poziom", "*3 Poziom", "Opcje", "Wyjście"};
 	
 
 	public MenuP (LevelManager lm) {
@@ -45,7 +45,7 @@ public class MenuP extends Level {
 		//title
 		 g.setColor(titleColor);
 		 g.setFont(titleFont);
-		 g.drawString("Ucieczka z Javy", 50, 70);
+		 g.drawString("Ucieczka z Javy", 70, 120);
 		 
 		 //menu
 		 g.setFont(font);
@@ -56,7 +56,7 @@ public class MenuP extends Level {
 				else {
 					g.setColor(Color.BLACK);
 				}
-				g.drawString(options[i], 180, 350 + i * 35);
+				g.drawString(options[i], 180, 320 + i * 35);
 			}
 
 	}
@@ -92,9 +92,12 @@ public class MenuP extends Level {
 			lm.setLvl(LevelManager.LVL2);
 		}
 		if(currentChoice == 2) {
-			lm.setState(LevelManager.SETTINGS_P);
+			lm.setLvl(LevelManager.LVL3);
 		}
 		if(currentChoice == 3) {
+			lm.setState(LevelManager.SETTINGS_P);
+		}
+		if(currentChoice == 4) {
 			System.exit(0);
 		}
 
