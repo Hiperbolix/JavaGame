@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
 import Game.Window;
+import audio.AudioPlayer;
 import entity.*;
 import sprites.*;
 
@@ -14,6 +15,8 @@ public class Level3 extends Level {
 	private Background bg;
 	
 	private Player player;
+	
+	private AudioPlayer bgMusic;
 
 	public Level3(LevelManager lm) {
 		this.lm = lm;
@@ -33,7 +36,8 @@ public class Level3 extends Level {
 		player = new Player(spriteMap);
 		player.setPosition(100, 200);
 		
-		
+		bgMusic = new AudioPlayer("/Music/Quick.mp3");
+		bgMusic.play();
 		
 
 	}
@@ -77,6 +81,7 @@ public class Level3 extends Level {
 		if(k == KeyEvent.VK_W) player.setJumping(true);
 		if(k == KeyEvent.VK_ESCAPE) System.exit(0);
 		if(k == KeyEvent.VK_ENTER) lm.setState(LevelManager.MENUID);
+		
 	}
 	
 	public void keyReleased(int k) {
