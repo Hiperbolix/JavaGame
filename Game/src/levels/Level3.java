@@ -34,10 +34,10 @@ public class Level3 extends Level {
 		bg = new Background("/Backgrounds/grass.jpg");
 		
 		player = new Player(spriteMap);
-		player.setPosition(100, 200);
+		player.setPosition(100, 490);
 		
 		bgMusic = new AudioPlayer("/Music/Quick.mp3");
-		bgMusic.play();
+		//bgMusic.play();
 		
 
 	}
@@ -81,6 +81,9 @@ public class Level3 extends Level {
 		if(k == KeyEvent.VK_W) player.setJumping(true);
 		if(k == KeyEvent.VK_ESCAPE) System.exit(0);
 		if(k == KeyEvent.VK_ENTER) lm.setState(LevelManager.MENUID);
+		if(k == KeyEvent.VK_MINUS) bgMusic.stop();
+		if(k == KeyEvent.VK_PLUS) bgMusic.play();
+		
 		
 	}
 	

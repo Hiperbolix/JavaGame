@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import Game.*;
+import audio.AudioPlayer;
 import levels.*;
 
 
@@ -18,7 +19,7 @@ public class MenuR extends Level {
 	private int currentChoice = 0;
 	private String[] options= {"*1 Уровень", "*2 Уровень", "*3 Уровень", "Опции", "Выход"};
 	
-
+	
 	public MenuR (LevelManager lm) {
 		this.lm = lm;
 

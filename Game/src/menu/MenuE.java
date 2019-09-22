@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import Game.*;
+import audio.AudioPlayer;
 import levels.*;
 
 
@@ -18,7 +19,8 @@ public class MenuE extends Level {
 	private int currentChoice = 0;
 	private String[] options= {"*1 Level", "*2 Level", "*3 Level", "Settings", "Quit"};
 	
-
+	
+	
 	public MenuE (LevelManager lm) {
 		this.lm = lm;
 
@@ -33,6 +35,7 @@ public class MenuE extends Level {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public void start() {}
@@ -58,6 +61,7 @@ public class MenuE extends Level {
 				}
 				g.drawString(options[i], 180, 320 + i * 35);
 			}
+		
 
 	}
 

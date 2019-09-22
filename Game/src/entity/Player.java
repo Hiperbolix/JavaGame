@@ -133,7 +133,7 @@ public class Player extends Entity {
 			*/
 			if(jumping&& !falling)
 			{
-				System.out.println("Skok");
+				//System.out.println("Skok");
 				dy=JumpStart;
 				falling = true;
 			}

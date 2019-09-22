@@ -26,7 +26,7 @@ public static final int LVLAMMOUNT = 10;
 	{
 		lvl =new Level[LVLAMMOUNT];
 		currentLvl = MENUID;
-		//currentLvl = LVL1ID;
+		//currentLvl = SETTINGS_P;
 		loadLevel(currentLvl);
 	}
 

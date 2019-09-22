@@ -22,6 +22,7 @@ public class SettingsP extends Level{
 	
 	private String choice = "Wybierz język:";
 	private String[] languages= {"1-Polski", "2-English", "3-Русский"};
+	private String[] voice= {"+ Włączyć", "- Wyłączyć"};
 	
 
 	
@@ -56,7 +57,7 @@ public class SettingsP extends Level{
 		 g.setColor(Color.cyan);
 		 g.setFont(menuFont);
 		 
-		 
+ 
 		 //menu
 		 g.setFont(font);
 		 for(int i = 0; i < options.length; i++) {
@@ -77,6 +78,14 @@ public class SettingsP extends Level{
 				 
 				 g.setColor(Color.BLACK);
 				 g.drawString(languages[i], 320, 260 + i * 30);
+			}
+		}
+		 
+		 for(int i = 0; i < voice.length; i++) {
+			 if(1 == currentChoice) {
+				 
+				 g.setColor(Color.BLACK);
+				 g.drawString(voice[i], 320, 260 + i * 30);
 			}
 		}
 		 
