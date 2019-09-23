@@ -1,6 +1,4 @@
-package Game;
-
-import java.awt.*;
+package game;
 
 import javax.swing.JFrame;
 

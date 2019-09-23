@@ -3,7 +3,7 @@ package menu;
 import java.awt.*;
 import java.awt.event.*;
 
-import Game.*;
+import game.*;
 import levels.*;
 
 public class SettingsR extends Level{
@@ -21,7 +21,7 @@ public class SettingsR extends Level{
 	
 	private String choice = "Выбери Язык:";
 	private String[] languages= {"1-Polski", "2-English", "3-Русский"};
-	private String[] voice= {"+ Включить", "- Выключить"};
+	private String[] voice= {"0 Включить", "- Выключить"};
 	
 	
 	public SettingsR (LevelManager lm) {
@@ -44,6 +44,7 @@ public class SettingsR extends Level{
 	
 	
 	public void draw(Graphics2D g) {
+		
 		//background
 		bg.draw(g);
 		 
@@ -92,11 +93,7 @@ public class SettingsR extends Level{
 
 	public void keyPressed(int k) {
 		if(k == KeyEvent.VK_ENTER){	
-					
-			if(currentChoice == 1) {
-				
-				
-			}
+			
 			if(currentChoice == 2) {
 				lm.setState(LevelManager.MENU_R);
 			}			
@@ -114,8 +111,7 @@ public class SettingsR extends Level{
 			currentChoice++;
 			if(currentChoice == options.length) {
 				currentChoice = 0;
-			}
-			
+			}	
 		}
 		
 		if(k == KeyEvent.VK_1) {
@@ -129,7 +125,6 @@ public class SettingsR extends Level{
 		if(k == KeyEvent.VK_3) {
 			lm.setState(LevelManager.SETTINGS_R);
 		}
-		
 	}
 
 	public void keyReleased(int k) {}

@@ -3,7 +3,7 @@ package menu;
 import java.awt.*;
 import java.awt.event.*;
 
-import Game.*;
+import game.*;
 import levels.Level;
 import levels.LevelManager;
 
@@ -14,18 +14,15 @@ public class SettingsP extends Level{
 	private Color titleColor;
 	private Font titleFont;
 	private Font menuFont;
-	
 	private Font font;
 	
 	private int currentChoice = 0;
-	private String[] options= {"Język", "Dźwięk", "Wróć"};
-	
+	private String[] options = {"Język", "Dźwięk", "Wróć"};
 	private String choice = "Wybierz język:";
-	private String[] languages= {"1-Polski", "2-English", "3-Русский"};
-	private String[] voice= {"+ Włączyć", "- Wyłączyć"};
+	private String[] languages = {"1-Polski", "2-English", "3-Русский"};
+	private String[] voice = {"0 Włączyć", "- Wyłączyć"};
 	
 
-	
 	public SettingsP (LevelManager lm) {
 		this.lm = lm;
 
@@ -46,6 +43,7 @@ public class SettingsP extends Level{
 	
 	
 	public void draw(Graphics2D g) {
+		
 		//background
 		bg.draw(g);
 		 
@@ -57,7 +55,6 @@ public class SettingsP extends Level{
 		 g.setColor(Color.cyan);
 		 g.setFont(menuFont);
 		 
- 
 		 //menu
 		 g.setFont(font);
 		 for(int i = 0; i < options.length; i++) {
@@ -82,23 +79,15 @@ public class SettingsP extends Level{
 		}
 		 
 		 for(int i = 0; i < voice.length; i++) {
-			 if(1 == currentChoice) {
-				 
+			 if(1 == currentChoice) {			 
 				 g.setColor(Color.BLACK);
 				 g.drawString(voice[i], 320, 260 + i * 30);
 			}
 		}
-		 
-
 	}
 
 	public void keyPressed(int k) {
 		if(k == KeyEvent.VK_ENTER){	
-					
-			if(currentChoice == 1) {
-				
-				
-			}
 			if(currentChoice == 2) {
 				lm.setState(LevelManager.MENUID);
 			}			
@@ -108,8 +97,7 @@ public class SettingsP extends Level{
 			currentChoice--;
 			if(currentChoice == -1) {
 				currentChoice = options.length - 1;
-			}
-			
+			}	
 		}
 		
 		if(k == KeyEvent.VK_DOWN) {
@@ -117,7 +105,6 @@ public class SettingsP extends Level{
 			if(currentChoice == options.length) {
 				currentChoice = 0;
 			}
-			
 		}
 		
 		if(k == KeyEvent.VK_1) {
@@ -131,7 +118,6 @@ public class SettingsP extends Level{
 		if(k == KeyEvent.VK_3) {
 			lm.setState(LevelManager.SETTINGS_R);
 		}
-		
 	}
 
 	public void keyReleased(int k) {}

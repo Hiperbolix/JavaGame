@@ -12,12 +12,6 @@ import sprites.*;
 
 public class Player extends Entity {
 
-	// player stuff
-		private int health;
-		private int maxHealth;
-		private boolean dead;
-		
-		
 		private static final int IDLE = 0;
 		private static final int WALKING = 1;
 		private static final int JUMPING = 2;
@@ -39,21 +33,15 @@ public class Player extends Entity {
 			cwidth = 70;
 			cheight = 70;
 			
-			acceleration=0.5;
-			//vX = 0.5;
-			vMax= 2.5;
+			acceleration = 0.5;
+			vMax = 2.5;
 			deceleration = 0.4;
 			currentG = 0.1;
 			maxFall = 4.0;
-			JumpStart=-4;
-			
-			//facingRight = true;
-			
-			health = maxHealth = 5;
+			JumpStart =- 4;
 			
 			// load sprites
 			try {
-				
 				cat1 = ImageIO.read(getClass().getResourceAsStream("/Player/catpraw.png"));
 				cat2 = ImageIO.read(getClass().getResourceAsStream("/Player/catlew.png"));
 				cat3 = ImageIO.read(getClass().getResourceAsStream("/Player/catsie.png"));
@@ -62,17 +50,14 @@ public class Player extends Entity {
 				bi[0]=cat1;
 				bi[1]=cat2;
 				
-				
 				sprites = new ArrayList<BufferedImage[]>();
-				
 				sprites.add(bi);
-				
-					
-				
 			}
+			
 			catch(Exception e) {
 				e.printStackTrace();
 			}
+			
 			animation = new Animation();
 			currentAction = IDLE;
 			animation.setFrames(sprites.get(IDLE));
@@ -80,34 +65,31 @@ public class Player extends Entity {
 			
 		}
 		
-		//public int getHealth() { return health; }
-		//public int getMaxHealth() { return maxHealth; }
-		
-		
 		private void getNextPosition() {
 			
 			// x movement
 			if(left) {
 				dx -= acceleration;
 				if(dx < -vMax) {
-					dx = -acceleration;
-					
+					dx =- acceleration;	
 				}
 			}
+			
 			else if(right) {
 				dx += acceleration;
 				if(dx > vMax) {
 					dx = acceleration;
 				}
 			}
+			
 			else {
-				if(dx > 0) {
+				if(dx > 0) { 
 					dx -= deceleration;
-					
 					if(dx < 0) {
 						dx = 0;
 					}
 				}
+				
 				else if(dx < 0) {
 					dx += deceleration;
 					if(dx > 0) {
@@ -115,33 +97,17 @@ public class Player extends Entity {
 					}
 				}
 			}
-			// y movement
-			/*
-			if(flying)
+		
+			if(jumping && !falling)
 			{
-				dy=flySpeed;
-				falling = true;
-			}
-			else {
-				if(jumping&& !falling)
-					{
-						System.out.println("Skok");
-						dy=JumpStart;
-						falling = true;
-					}
-				}
-			*/
-			if(jumping&& !falling)
-			{
-				//System.out.println("Skok");
-				dy=JumpStart;
+				dy = JumpStart;
 				falling = true;
 			}
 			if(falling)
 			{
-				dy+=currentG;
-				if(dy>0) jumping=false;
-				if(dy>maxFall) dy=maxFall;
+				dy += currentG;
+				if(dy > 0) jumping = false;
+				if(dy > maxFall) dy = maxFall;
 			}
 		}
 		
@@ -154,22 +120,18 @@ public class Player extends Entity {
 			
 			animation.setFrames(sprites.get(0));
 			animation.setDelay(400);
-			//width = 30;
-			
 			animation.update();
 		}
 		
 		public void draw(Graphics2D g) {
 			
 			setMapPosition();
-			
-			//super.draw(g);
-			if(dx<0) g.drawImage(cat2, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
-			if(dx==0) g.drawImage(cat3, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
-			if(dx>0) g.drawImage(cat1, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
+	
+			if(dx < 0) g.drawImage(cat2, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
+			if(dx == 0) g.drawImage(cat3, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
+			if(dx > 0) g.drawImage(cat1, (int)( x + xmap - width / 2), (int)(y + ymap - height / 2), null);
 			
 		}
-		
 }
 
 

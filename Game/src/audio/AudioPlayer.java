@@ -1,8 +1,6 @@
 package audio;
 
 import javax.sound.sampled.*;
-import java.io.*;
-import javax.swing.*;
 
 public class AudioPlayer {
 	
@@ -13,42 +11,27 @@ public class AudioPlayer {
 		try {
 			
 			AudioInputStream ais =
-				AudioSystem.getAudioInputStream(
-					getClass().getResourceAsStream(
-						s
-					)
-				);
+				AudioSystem.getAudioInputStream(getClass().getResourceAsStream(s));
 			AudioFormat baseFormat = ais.getFormat();
 			AudioFormat decodeFormat = new AudioFormat(
-				AudioFormat.Encoding.PCM_SIGNED,
-				baseFormat.getSampleRate(),
-				16,
-				baseFormat.getChannels(),
-				baseFormat.getChannels() * 2,
-				baseFormat.getSampleRate(),
-				false
-			);
+				AudioFormat.Encoding.PCM_SIGNED,baseFormat.getSampleRate(),16,baseFormat.getChannels(),
+				baseFormat.getChannels() * 2,baseFormat.getSampleRate(),false);
 			AudioInputStream dais =
-				AudioSystem.getAudioInputStream(
-					decodeFormat, ais);
+				AudioSystem.getAudioInputStream(decodeFormat, ais);
 			clip = AudioSystem.getClip();
 			clip.open(dais);
 			clip.loop(Clip.LOOP_CONTINUOUSLY);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 	
 	public void play() {
 		if(clip == null) return;
 		stop();
 		clip.setFramePosition(0);
-		clip.start();
-		
-		
-		 
+		clip.start(); 
 	}
 	
 	public void stop() {

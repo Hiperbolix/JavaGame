@@ -7,7 +7,7 @@ import java.awt.image.*;
 import java.io.*;
 import javax.imageio.ImageIO;
 
-import Game.Window;
+import game.Window;
 import sprites.Sprite;
 
 public class SpriteMap {
@@ -47,8 +47,7 @@ public class SpriteMap {
 		this.spriteSize = tileSize;
 		numRowsToDraw = Window.HEIGHT_P / tileSize + 2;
 		numColsToDraw = Window.WIDTH_P / tileSize + 2;
-		//System.out.println(Window.HEIGHT_P);
-		//tween = 1;
+	
 	}
 public void loadTiles(String s) {
 		
@@ -59,7 +58,6 @@ public void loadTiles(String s) {
 			);
 			numTilesAcross = tileset.getWidth() / spriteSize;
 			sprites = new Sprite[2][numTilesAcross];
-			//System.out.println(numTilesAcross);
 			
 			BufferedImage subimage;
 			for(int col = 0; col < numTilesAcross; col++) {
@@ -71,10 +69,10 @@ public void loadTiles(String s) {
 			}
 			
 		}
+		
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void loadMap(String s) {
@@ -82,9 +80,7 @@ public void loadTiles(String s) {
 		try {
 			
 			InputStream in = getClass().getResourceAsStream(s);
-			BufferedReader br = new BufferedReader(
-						new InputStreamReader(in)
-					);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			
 			numCols = Integer.parseInt(br.readLine());
 			numRows = Integer.parseInt(br.readLine());
@@ -105,12 +101,11 @@ public void loadTiles(String s) {
 					map[row][col] = Integer.parseInt(tokens[col]);
 				}
 			}
-			
-		}
-		catch(Exception e) {
-			e.printStackTrace();
 		}
 		
+		catch(Exception e) {
+			e.printStackTrace();
+		}	
 	}
 	
 	public int getTileSize() { return spriteSize; }
@@ -121,11 +116,8 @@ public void loadTiles(String s) {
 	
 	public int getType(int row, int col) {
 		int rc = map[row][col];
-		int r = rc / numTilesAcross;
-		int c = rc % numTilesAcross;
-		//return sprites[r][c].getType();
-		//return Sprite.BLOCKED;
-		if (rc<2) return Sprite.NORMAL;
+		
+		if (rc < 2) return Sprite.NORMAL;
 		else return Sprite.BLOCKED;
 	}
 	
@@ -152,8 +144,6 @@ public void loadTiles(String s) {
 	
 	public void draw(Graphics2D g) {
 
-		
-		
 		for(int row = rowOffset;row < rowOffset + numRowsToDraw;row++) {
 				
 			if(row >= numRows) break;
@@ -171,9 +161,7 @@ public void loadTiles(String s) {
 				g.drawImage(sprites[r][c].getImage(),(int)x + col * spriteSize,(int)y + row * spriteSize,null);
 				
 			}
-		}
-		
+		}	
 	}
-	
 
 }

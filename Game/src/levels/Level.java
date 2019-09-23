@@ -1,6 +1,7 @@
 package levels;
 
-public abstract class Level { //Klasa Abstrakcynja, która mniej więcej mówi czym jest poziom
+public abstract class Level { 
+	//Klasa Abstrakcynja, ktora mniej wiecej mowi czym jest poziom
 	
 	protected LevelManager lm;
 	

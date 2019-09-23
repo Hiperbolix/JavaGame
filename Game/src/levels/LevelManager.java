@@ -8,25 +8,23 @@ public class LevelManager {
 	protected Level[] lvl;
 	protected int currentLvl;
 	
-public static final int LVLAMMOUNT = 10;
+	public static final int LVLAMMOUNT = 9;
 	
 	public static final int MENUID = 0;
 	public static final int LVL1ID = 1;
-	public static final int DEBUGID = 2;
-	public static final int MENU_E = 3;	
-	public static final int SETTINGS_E = 4;
-	public static final int MENU_R = 5;	
-	public static final int SETTINGS_R = 6;
-	public static final int SETTINGS_P = 7;
-	public static final int LVL2 = 8;
-	public static final int LVL3 = 9;
+	public static final int MENU_E = 2;	
+	public static final int SETTINGS_E = 3;
+	public static final int MENU_R = 4;	
+	public static final int SETTINGS_R = 5;
+	public static final int SETTINGS_P = 6;
+	public static final int LVL2 = 7;
+	public static final int LVL3 = 8;
 
 	
 	public LevelManager()
 	{
 		lvl =new Level[LVLAMMOUNT];
 		currentLvl = MENUID;
-		//currentLvl = SETTINGS_P;
 		loadLevel(currentLvl);
 	}
 
@@ -34,16 +32,13 @@ public static final int LVLAMMOUNT = 10;
 		
 		if(lvlN == MENUID) lvl[lvlN] = new MenuP(this);
 		if(lvlN == LVL1ID) lvl[lvlN] = new Level1(this);
-		if(lvlN == DEBUGID) lvl[lvlN] = new Debug(this);
 		if(lvlN == SETTINGS_P) lvl[lvlN] = new SettingsP(this);
 		if(lvlN == MENU_E) lvl[lvlN] = new MenuE(this);
 		if(lvlN == SETTINGS_E) lvl[lvlN] = new SettingsE(this);
 		if(lvlN == MENU_R) lvl[lvlN] = new MenuR(this);
 		if(lvlN == SETTINGS_R) lvl[lvlN] = new SettingsR(this);
 		if(lvlN == LVL2) lvl[lvlN] = new Level2(this);
-		if(lvlN == LVL3) lvl[lvlN] = new Level3(this);
-
-		
+		if(lvlN == LVL3) lvl[lvlN] = new Level3(this);	
 	}
 	
 	
@@ -55,7 +50,6 @@ public static final int LVLAMMOUNT = 10;
 		unloadLevel(currentLvl);
 		currentLvl = lvl;
 		loadLevel(currentLvl);
-		//gameStates[currentState].init();
 	}
 	
 	public void draw(java.awt.Graphics2D g) {
@@ -82,8 +76,6 @@ public static final int LVLAMMOUNT = 10;
 		lvl[currentLvl] = null;
 		currentLvl = i;
 		loadLevel(currentLvl);
-		
 	}	
-	
 	
 }

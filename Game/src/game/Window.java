@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 
 import java.awt.*;
@@ -16,7 +16,6 @@ public class Window extends JPanel implements Runnable, KeyListener{
 	public final String title ="Ucieczka z Javy";
 	public static final int WIDTH_P = 800;
 	public static final int HEIGHT_P = 600;
-
 	
 	// Watki
 	private Thread thread;
@@ -37,10 +36,8 @@ public class Window extends JPanel implements Runnable, KeyListener{
 		
 		thread = new Thread(this);
 		addKeyListener(this);
-		thread.start();
-		
+		thread.start();	
 	}
-	
 	
 	private void start() {
 
@@ -49,8 +46,7 @@ public class Window extends JPanel implements Runnable, KeyListener{
 			
 			running = true;
 			
-			lm = new LevelManager();
-			
+			lm = new LevelManager();	
 	}
 
 	public void run() {
@@ -81,31 +77,24 @@ public class Window extends JPanel implements Runnable, KeyListener{
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			
-		}
-		
+		}	
 	}
 
 
 	private void update() {
 		lm.update();
-		
 	}
 
 	public void keyPressed(KeyEvent key) {
 		lm.keyPressed(key.getKeyCode());
-		
 	}
 
-	
 	public void keyReleased(KeyEvent key) {
 		lm.keyReleased(key.getKeyCode());
-		
 	}
 	
 	public void keyTyped(KeyEvent key) {}
 
-	
 	private void draw() {
 		lm.draw(g);
 	}

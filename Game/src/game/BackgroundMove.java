@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -32,18 +32,16 @@ public class BackgroundMove {
 	
 	public void update() {x += dx;}
 	
-	
-	
 	public void draw(Graphics2D g) {
 		
 		g.drawImage(image, (int)x, 0, null);
 			if(x < 0) { 
 				g.drawImage(image, (int)x + Window.WIDTH_P, 0, null);
 			}
+			
 			if(x > 0) {
 				g.drawImage(image, (int)x - Window.WIDTH_P, 0, null);
 			}
 		}	
-
 }
 

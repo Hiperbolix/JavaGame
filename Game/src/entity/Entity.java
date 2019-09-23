@@ -1,11 +1,13 @@
 package entity;
 
 import java.awt.*;
+
+import game.Window;
 import sprites.*;
-import Game.Window;
 
 
 public abstract class Entity {
+	
 	//position
 	protected double x;
 	protected double y;
@@ -29,7 +31,6 @@ public abstract class Entity {
 	protected boolean bottomLeft;
 	protected boolean bottomRight;
 	
-	
 	//movement
 	protected double acceleration;
 	protected double deceleration;
@@ -38,6 +39,7 @@ public abstract class Entity {
 	protected double currentG;
 	protected double maxFall;
 	protected double JumpStart;
+	
 	// movement logic
 	protected boolean facingright;
 	protected boolean left;
@@ -47,17 +49,16 @@ public abstract class Entity {
 	protected boolean jumping;
 	protected boolean falling;
 	protected boolean flying;
+	
 	//sprite
 	protected SpriteMap spriteMap;
 	protected int spriteSize;
 	protected double xmap;
 	protected double ymap;
 	
-	
 	//animation
 	protected int currentAction;
 	protected Animation animation;
-	
 	
 	
 	public Entity(SpriteMap sm) {
@@ -152,7 +153,6 @@ public abstract class Entity {
 				falling = true;
 			}
 		}
-		
 	}
 	
 	public int getx() { return (int)x; }
@@ -166,6 +166,7 @@ public abstract class Entity {
 		this.x = x;
 		this.y = y;
 	}
+	
 	public void setVector(double dx, double dy) {
 		this.dx = dx;
 		this.dy = dy;
@@ -175,7 +176,6 @@ public abstract class Entity {
 		xmap = spriteMap.getx();
 		ymap = spriteMap.gety();
 	}
-	
 
 	public void setLeft(boolean b) { left = b; }
 	public void setRight(boolean b) { right = b; }
@@ -189,24 +189,12 @@ public abstract class Entity {
 			y + ymap + height < 0 ||
 			y + ymap - height > Window.HEIGHT;
 	}
-	// animacja
+	
+	// animation
 	public void draw(java.awt.Graphics2D g) {
 		g.drawImage(
-			animation.getImage(),
-			(int)(x + xmap - width / 2),
-			(int)(y + ymap - height / 2),
-			null
-		);
-		/*
-		System.out.println("x= "+ (x + xmap - width / 2));
-		System.out.println("y= "+ (y + ymap - height / 2));
-		
-
-		System.out.println("xmap= "+ (xmap));
-		System.out.println("ymap= "+ (ymap));
-		*/
+			animation.getImage(), (int)(x + xmap - width / 2), 
+			(int)(y + ymap - height / 2),null);
 	}
-	
-
 }
 

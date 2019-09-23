@@ -3,7 +3,7 @@ package menu;
 import java.awt.*;
 import java.awt.event.*;
 
-import Game.*;
+import game.*;
 import levels.*;
 
 public class SettingsE extends Level{
@@ -20,8 +20,8 @@ public class SettingsE extends Level{
 	private String[] options= {"Language", "Sound", "Return"};
 	
 	private String choice = "Choose language:";
-	private String[] languages= {"1-Polski", "2-English", "3-Русский"};
-	private String[] voice= {"+ Turn On", "- Turn Off"};
+	private String[] languages = {"1-Polski", "2-English", "3-Русский"};
+	private String[] voice = {"0 Turn On", "- Turn Off"};
 
 	
 	public SettingsE (LevelManager lm) {
@@ -44,6 +44,7 @@ public class SettingsE extends Level{
 	
 	
 	public void draw(Graphics2D g) {
+		
 		//background
 		bg.draw(g);
 		 
@@ -78,6 +79,7 @@ public class SettingsE extends Level{
 				 g.drawString(languages[i], 320, 260 + i * 30);
 			}
 		}
+		 
 		 for(int i = 0; i < voice.length; i++) {
 			 if(1 == currentChoice) {
 				 
@@ -85,17 +87,11 @@ public class SettingsE extends Level{
 				 g.drawString(voice[i], 320, 260 + i * 30);
 			}
 		}
-		 
-		
 	}
 
 	public void keyPressed(int k) {
 		if(k == KeyEvent.VK_ENTER){	
-					
-			if(currentChoice == 1) {
-				
-				
-			}
+			
 			if(currentChoice == 2) {
 				lm.setState(LevelManager.MENU_E);
 			}			

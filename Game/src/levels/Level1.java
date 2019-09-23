@@ -3,19 +3,17 @@ package levels;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
-import Game.Window;
 import audio.AudioPlayer;
 import entity.*;
+import game.*;
 import sprites.*;
 
 public class Level1 extends Level {
 	
 
 	private SpriteMap spriteMap;
-	private Background bg;
-	
+	private Background bg;	
 	private Player player;
-
 	private AudioPlayer bgMusic;
 
 	public Level1(LevelManager lm) {
@@ -36,14 +34,9 @@ public class Level1 extends Level {
 		player = new Player(spriteMap);
 		player.setPosition(100, 490);
 
-		bgMusic = new AudioPlayer("/Music/Quick.mp3");
-		//bgMusic.play();
-		
-		
-
+		bgMusic = new AudioPlayer("/Music/Quick.mp3");		
 	}
 
-	@Override
 	public void update() {
 		player.update();
 		spriteMap.setPosition(
@@ -56,22 +49,13 @@ public class Level1 extends Level {
 
 	}
 
-	@Override
 	public void draw(Graphics2D g) {
-		/*
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, Window.WIDTH_P, Window.HEIGHT_P);
-		g.setColor(Color.RED);
-		g.fillRect(1,1,10,10);
-		//System.out.println("Jestem tu");
-		// draw tilemap
-		 */
-		bg.draw(g);
 		
+		// draw tilemap
+		bg.draw(g);	
 		spriteMap.draw(g);
 		
 		player.draw(g);
-
 	}
 
 	public void keyPressed(int k) {
@@ -82,7 +66,7 @@ public class Level1 extends Level {
 		if(k == KeyEvent.VK_W) player.setJumping(true);
 		if(k == KeyEvent.VK_ESCAPE) System.exit(0);
 		if(k == KeyEvent.VK_ENTER) lm.setState(LevelManager.MENUID);
-		if(k == KeyEvent.VK_PLUS) bgMusic.play();
+		if(k == KeyEvent.VK_0) bgMusic.play();
 		if(k == KeyEvent.VK_MINUS) bgMusic.stop();
 	}
 	
@@ -92,9 +76,6 @@ public class Level1 extends Level {
 		if(k == KeyEvent.VK_UP) player.setUp(false);
 		if(k == KeyEvent.VK_S) player.setDown(false);
 		if(k == KeyEvent.VK_W) player.setJumping(false);
-		
-		
 	}
-
 }
 
